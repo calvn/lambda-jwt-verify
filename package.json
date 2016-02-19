@@ -1,0 +1,16 @@
+{
+  "name": "lambda-jwt-verify",
+  "version": "0.1.0",
+  "description": "Lambda function for verifying JWTs",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cleung2010/lambda-jwt-verify"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "jsonwebtoken": "^5.7.0"
+  }
+}
