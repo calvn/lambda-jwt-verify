@@ -8,16 +8,13 @@ exports.handler = function(event, context) {
     var secretBuf = new Buffer(secret, 'base64');
     var idToken = event.authorizationToken.split(' ')[1];
     var currentTime = Math.floor(Date.now() / 1000);
-    jwt.verify(idToken, secretBuf, function(err, payload) {
+    jwt.verify(idToken, secretBuf, function(err, decoded) {
       if (err) {
         console.log('failed jwt verify: ', err, 'auth: ', idToken);
         return context.fail('authorization failure');
-      } else if (payload.exp && payload.exp > currentTime) {
-        console.log('expired token, current time:', currentTime, 'exp: ', payload.exp);
-        return context.fail('authorization failure');
       } else {
-        console.log('authorized:', payload);
-        return context.succeed(payload);
+        console.log('authorized:', decoded);
+        return context.succeed(decoded);
       }
     });
   } else {
