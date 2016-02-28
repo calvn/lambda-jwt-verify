@@ -14,7 +14,6 @@ exports.handler = function(event, context) {
         return context.fail('authorization failure');
       } else {
         console.log('authorized:', decoded);
-        return context.succeed(decoded);
       }
     });
   } else {
